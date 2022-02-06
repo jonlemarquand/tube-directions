@@ -17,6 +17,7 @@ class CreateLineStationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('line_id');
             $table->unsignedBigInteger('station_id');
+            $table->unsignedBigInteger('line_position');
             $table->foreign('line_id')->references('id')->on('lines');
             $table->foreign('station_id')->references('id')->on('stations');
         });

@@ -26,13 +26,14 @@ class LineStationSeeder extends Seeder
 
     private function addLineStation($lines, $number)
     {
-        foreach($lines as $station) {
+        foreach($lines as $key => $station) {
             $stationFull = Station::where('name', '=', $station)->firstOrFail();
             $stationId = $stationFull['id'];
             if(isset($stationId)) {
                 DB::table('line_stations')->insert([
                     'line_id' => $number,
                     'station_id' => $stationId,
+                    'line_position' => $key + 1,
                 ]);
             }
         }
